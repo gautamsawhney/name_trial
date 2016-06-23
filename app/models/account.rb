@@ -1,15 +1,18 @@
-class Account < ApplicationRecord
+class Account < ActiveRecord::Base
 
-  # Autocode: Callbacks
-    
+	# Autocode: Callback
+
+	# Include default devise modules. Others available are:
+	# :confirmable, :lockable, :timeoutable and :omniauthable
+
+ 	devise :database_authenticatable, :registerable,
+        :recoverable, :rememberable, :trackable, :validatable
   # Autocode: Relationships
-  
-  # Autocode: Accept Nested Attributes
+  has_many :authtokens, dependent: :destroy
 
-  # File Upload
+	# File Upload
 
   # Autocode: Validations
 
 	# Soft Destroy
-
 end
